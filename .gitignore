@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+
+# 秘密情報
+.env
+.env.*
+
+# エディタ・OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Claude Code の個人設定
+.claude/settings.local.json
