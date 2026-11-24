@@ -205,3 +205,14 @@ y_{\text{next}}&=y+\tfrac{h}{6}(k_1+2k_2+2k_3+k_4)
 - 間引かないと、スマホの回線では読み込みに時間がかかりすぎる
 - **1/60秒ごとに間引き、小数4桁（角度なら0.0001 rad）に丸めて返す**ことにする。画面で見分けられる差よりずっと細かいので、見た目は変わらない
 - 丸めるのは返すときだけで、計算そのものは丸めない
+
+## 4. 入れ替えられる作り
+
+運動方程式と RK4 を別のファイルに分けます。RK4 は「状態 y と微分 f」だけを知っています。
+
+```text
+backend/physics/
+├── integrator.py   rk4_step(f, t, y, dt)、integrate(f, y0, dt, steps)
+├── system.py       System：derivative(t, y) と energy(y) を持つ型（Protocol）
+└── pendulum.py     NPendulum(m, l, g)：System を満たす。mass_matrix、forcing、tip_acceleration も持つ
+```
